@@ -122,3 +122,4 @@ def search(lyric):
     print('- has a double character (e.g. \'oo\'):' + str(word))
     print()
 search(lyric)
+print("End")

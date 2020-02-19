@@ -86,11 +86,17 @@ def search(lyric):
     print()
 
     # does not have an 'a' nor 'e'  
+    word = re.findall(r'\b[^ae\s]+\b', lyric)
+    print('- Does not have an \'a\' nor \'e\':' + str(word))
+    print()
 
     # has an 'a' but not 'e'
+    word = re.findall(r'\b[^e\s]+\b', lyric)
+    print('- has an \'a\' but not \'e\':' + str(word))
+    print()
 
     # has at least 2 consecutive vowels (a,e,i,o,u) like in the word "bear"
-    word = re.findall(r"\w*[aeiou]{2,}\w*", lyric)
+    word = re.findall(r"\w*[aeiou]{2,}[\w\'s]*", lyric)
     print('- has at least 2 consecutive vowels (a,e,i,o,u) like in the word "bear":' + str(word))
     print()
 

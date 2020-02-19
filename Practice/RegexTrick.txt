@@ -1,8 +1,14 @@
 #adjacent same text:
 r'(\b[\w\']+\b)\s\1'
+#adjacent same number:
+(r'(\d\d\d)+\s*\1', lyric)
+
 
 #does not have an 'a'
-word = re.findall(r'\b[^a\s]+\b', lyric)
+word = re.findall(r'\b[^a\s]+\b', lyric) #Messup with letter with's
+
+# does not have an 'a' nor 'e' 
+word = re.findall(r'\b[^ae\s]+\b', lyric) #Mess up with letter with 's
 
 # has a '*' in it. No use \b for metacharacter
 word = re.findall(r'[\w]*[*]+\w*',lyric)

@@ -1,5 +1,5 @@
 #This function read all text from a file to a list of string
-def readFile2List(fileName):
+def readFileToList(fileName):
     myFile = None
     try:
         myFile = open(fileName)
@@ -17,5 +17,5 @@ a. Tokenize and remove all linefeeds
 b. Count the freequence of each token using dictionary
 '''
 nameOfFile = 'Python_255_TryCatchWithFileIO_Song.txt'
-lst = readFile2List(nameOfFile)
+lst = readFileToList(nameOfFile)
 print(lst)

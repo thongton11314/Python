@@ -1,5 +1,6 @@
-
+#This function read all text from a file to a list of string
 def readFile2List(fileName):
+    myFile = None
     try:
         myFile = open(fileName)
         return myFile.readlines()
@@ -7,7 +8,14 @@ def readFile2List(fileName):
         print('File Not Found', fileName)
         return []
     finally:
-        myFile.close()
+        if myFile is not None:
+            myFile.close()
 
-lst = readFile2List('song.txt')
+'''
+Write a fuction that accepts a list string and performs the following tasks
+a. Tokenize and remove all linefeeds
+b. Count the freequence of each token using dictionary
+'''
+nameOfFile = 'Python_255_TryCatchWithFileIO_Song.txt'
+lst = readFile2List(nameOfFile)
 print(lst)

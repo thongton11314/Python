@@ -1,13 +1,10 @@
-flag = True
-while flag is True:
+while True:
     try:
         a = int(input("Tell me one number:"))
         if (a < -1 or a > 10):
             print("Number exceed range, try again")
-            flag = True
-        else:
-            flag = False        
+        elif a in range(1,10): 
+            break      
     except:        
         print("Invalid input, only number allow")
-        flag = True
 print(str(a))

@@ -1,0 +1,8 @@
+#adjacent same text:
+r'(\b[\w\']+\b)\s\1'
+
+#does not have an 'a'
+word = re.findall(r'\b[^a\s]+\b', lyric)
+
+# has a '*' in it. No use \b for metacharacter
+word = re.findall(r'[\w]*[*]+\w*',lyric)

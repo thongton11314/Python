@@ -64,7 +64,7 @@ def search(lyric):
     print()
 
     # has a '*' in it
-    word = re.findall(r'\w*[*]\w*',lyric)
+    word = re.findall(r'[\w]*[*]+\w*',lyric)
     print('- Has a \'*\' in it:' + str(word))
     print()
 
@@ -76,16 +76,16 @@ def search(lyric):
     # has both 'a' and 'e' in it
 
     # has an 'a' and somewhere later an 'e'
-    word = re.findall(r"\w*a\w*e\w*", lyric)
+    word = re.findall(r"\b\w*a\w*e\b", lyric)
     print('- has an \'a\' and somewhere later an \'e\':' + str(word))
     print()
 
     # does not have an 'a'
+    word = re.findall(r'\b[^a\s]+\b', lyric)
+    print('- Does not have an \'a\':' + str(word))
+    print()
 
-    # does not have an 'a' nor 'e' 
-    word = re.findall(r"[^ae]", lyric)
-    print('- does not have an \'a\' nor \'e\' :' + str(word))
-    print() 
+    # does not have an 'a' nor 'e'  
 
     # has an 'a' but not 'e'
 
@@ -115,14 +115,39 @@ def search(lyric):
     print()
 
     # all the rows with either 'apple pie' or 'banana pie' in them
+    print("- All the rows with either 'apple pie' or 'banana pie' in them")
+    listOfSentences = re.findall(r'.+', lyric)
+    for eachSentence in listOfSentences:
+        matches = re.findall(r'apple\spie|banana\spie', eachSentence)
+        if matches:
+            print("  Line " + str(listOfSentences.index(eachSentence)))
+        if listOfSentences.index(eachSentence) == len(listOfSentences) - 1:
+            print("  Not match any")
+    print()
 
     # for each row print if it was apple or banana pie?
-    
+    print("- For each row print if it was apple or banana pie?")
+    listOfSentences = re.findall(r'.+', lyric)
+    for eachSentence in listOfSentences:
+        matches = re.findall(r'apple|banana\spie', eachSentence)
+        if matches:
+            print("  Line " + str(listOfSentences.index(eachSentence)))
+        if listOfSentences.index(eachSentence) == len(listOfSentences) - 1:
+            print("  Not match any")
+    print()
+
     # Bonus: Print if the same word appears twice in the same line
+    print("- Print if the same word appears twice in the same line")
+    listOfSentences = re.findall(r'.+', lyric) #Seperate the sentence in list
+    for index, eachSentence in enumerate(listOfSentences): #Loop through the list to find the words appears twice
+        matches = re.findall(r'(\b\w[^\s]+\b).+\1\b', eachSentence)
+        if matches:
+            print("  Line " + str(index + 1) + " in Lyric:" + str(matches))
+    print()
     
     # Bonus: has a double character (e.g. 'oo')
     word = re.findall(r"\w*o{2}\w*", lyric)
-    print('- has a double character (e.g. \'oo\'):' + str(word))
+    print('- Has a double character (e.g. \'oo\'):' + str(word))
     print()
 search(lyric)
 print("End")

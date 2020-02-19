@@ -16,6 +16,25 @@ Write a fuction that accepts a list string and performs the following tasks
 a. Tokenize and remove all linefeeds
 b. Count the freequence of each token using dictionary
 '''
+
+def tokenize(lyric):
+    result = []
+    for item in lyric:
+        item = item.replace('\n', '')
+        result = result + item.split(' ')
+    return result
+
+def countWord(listOfWord):   
+    myDict = {}
+    for word in listOfWord:
+        if word in myDict:
+            myDict[word] += 1
+        else:
+            myDict[word] = 1
+    return myDict
+
 nameOfFile = 'Python_255_TryCatchWithFileIO_Song.txt'
 lst = readFileToList(nameOfFile)
-print(lst)
+listOfWord = tokenize(lst)
+print(listOfWord)
+print("Most frequency word:" + max(countWord(listOfWord)))

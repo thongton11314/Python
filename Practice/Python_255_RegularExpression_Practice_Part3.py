@@ -83,6 +83,9 @@ def search(lyric):
     # does not have an 'a'
 
     # does not have an 'a' nor 'e' 
+    word = re.findall(r"[^ae]", lyric)
+    print('- does not have an \'a\' nor \'e\' :' + str(word))
+    print() 
 
     # has an 'a' but not 'e'
 

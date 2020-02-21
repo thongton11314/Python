@@ -34,7 +34,7 @@ I see my future in your eyes
 Baby, I'm dancing in the dark, with you between my arms
 Barefoot on the grass, listening to our favorite song
 When I saw you in that dress, looking so beautiful
-I don't deserve this, darling, you look perfect tonight
+I don't deserve this, darling, you look perfect tonight woo
 
 Baby, I'm dancing in the dark, with you between my arms
 Barefoot on the grass, listening to our favorite song
@@ -42,85 +42,107 @@ I have faith in what I see
 Now I know I have met an angel in person
 And she looks perfect
 I don't deserve this
-You look perfect tonight
-Quit are out of quin many*time """
- 
+I can not quit to love my queen many many*time """
+
+# This function will return a list contain a word that not appear twice
+def nonDuplicateWordInList(listOfWord):
+    nonDuplicatedList = []
+    for eachWord in listOfWord:
+        if eachWord not in nonDuplicatedList:
+            nonDuplicatedList.append(eachWord)
+    return nonDuplicatedList
+
 # Write functions using regex to perform the following search and to print out every word from the file that matches the requirement. 
 def search(lyric):
 
     # has a 'q'
     word = re.findall(r'\w*q\w*', lyric)
-    print('- Has a \'q\':' + str(word))
+    words = nonDuplicateWordInList(word)
+    print('- Has a \'q\':' + str(words))
     print()
 
     # has 'th'  
     word = re.findall(r'\w*th\w*', lyric)
-    print('- Has a \'th\':' + str(word))
+    words = nonDuplicateWordInList(word)
+    print('- Has a \'th\':' + str(words))
     print()
 
     # has an 'q' or a 'Q'
     word = re.findall(r'\w*[qQ]\w*', lyric)
-    print('- Has a \'q\' or \'Q\':' + str(word))
+    words = nonDuplicateWordInList(word)
+    print('- Has a \'q\' or \'Q\':' + str(words))
     print()
 
     # has a '*' in it
-    word = re.findall(r'[\w]*[*]+\w*',lyric)
-    print('- Has a \'*\' in it:' + str(word))
+    word = re.findall(r'\w*[*]+\w*',lyric)
+    words = nonDuplicateWordInList(word)
+    print('- Has a \'*\' in it:' + str(words))
     print()
 
     # starts with an 'q' or an 'Q'
     word = re.findall(r'\b[qQ]\w*', lyric)
-    print('- Starts with an \'q\' or \'Q\':' + str(word))
+    words = nonDuplicateWordInList(word)
+    print('- Starts with an \'q\' or \'Q\':' + str(words))
     print()
 
     # has both 'a' and 'e' in it
     word = re.findall(r'\w*a\w*e\w*|\w*e\w*a\w*', lyric)
-    print('- Has both \'a\' and \'e\' in it' + str(word))
+    words = nonDuplicateWordInList(word)
+    print('- Has both \'a\' and \'e\' in it:' + str(words))
     print()
 
     # has an 'a' and somewhere later an 'e'
     word = re.findall(r"\b\w*a\w*e\b", lyric)
-    print('- has an \'a\' and somewhere later an \'e\':' + str(word))
+    words = nonDuplicateWordInList(word)
+    print('- has an \'a\' and somewhere later an \'e\':' + str(words))
     print()
 
-    # does not have an 'a'
+#*    # does not have an 'a'
     word = re.findall(r'\b[^a\s]+\b', lyric)
-    print('- Does not have an \'a\':' + str(word))
+    words = nonDuplicateWordInList(word)
+    print('- Does not have an \'a\':' + str(words))
     print()
 
     # does not have an 'a' nor 'e'  
     word = re.findall(r'\b[^ae\s]+\b', lyric)
-    print('- Does not have an \'a\' nor \'e\':' + str(word))
+    words = nonDuplicateWordInList(word)
+    print('- Does not have an \'a\' nor \'e\':' + str(words))
     print()
 
     # has an 'a' but not 'e'
     word = re.findall(r'\b[^e\s]+\b', lyric)
-    print('- has an \'a\' but not \'e\':' + str(word))
+    words = nonDuplicateWordInList(word)
+    print('- has an \'a\' but not \'e\':' + str(words))
     print()
 
-    # has at least 2 consecutive vowels (a,e,i,o,u) like in the word "bear"
-    word = re.findall(r"\w*[aeiou]{2,}[\w\'s]*", lyric)
-    print('- has at least 2 consecutive vowels (a,e,i,o,u) like in the word "bear":' + str(word))
+#*    # has at least 2 consecutive vowels (a,e,i,o,u) like in the word "bear"
+    word = re.findall(r"\w*[aeiou]{2,}[\w\']*", lyric)
+    words = nonDuplicateWordInList(word)
+    print('- Has at least 2 consecutive vowels (a,e,i,o,u) like in the word "bear":' + str(words))
     print()
 
     # has at least 3 vowels
     word = re.findall(r'\w*[aeiou]{3,}\w*', lyric)
-    print('- has at least 3 vowels:' + str(word))
+    words = nonDuplicateWordInList(word)
+    print('- Has at least 3 vowels:' + str(words))
     print()
 
     # has at least 6 characters
     word = re.findall(r'\w{6,}', lyric)
-    print('- Has at least 6 characters:' + str(word))
+    words = nonDuplicateWordInList(word)
+    print('- Has at least 6 characters:' + str(words))
     print()
 
     # has at exactly 6 characters
     word = re.findall(r'\b\w{6}\b', lyric)
-    print('- Has at exactly 6 characters:' + str(word))
+    words = nonDuplicateWordInList(word)
+    print('- Has at exactly 6 characters:' + str(words))
     print()
 
     # all the words with either 'Bar' or 'Baz' in them
     word = re.findall(r'\bBa[rz]\w*', lyric)
-    print('- All the words with either \'Bar\' or \'Baz\' in them:' + str(word))
+    words = nonDuplicateWordInList(word)
+    print('- All the words with either \'Bar\' or \'Baz\' in them:' + str(words))
     print()
 
     # all the rows with either 'apple pie' or 'banana pie' in them
@@ -156,7 +178,8 @@ def search(lyric):
     
     # Bonus: has a double character (e.g. 'oo')
     word = re.findall(r"\w*o{2}\w*", lyric)
-    print('- Has a double character (e.g. \'oo\'):' + str(word))
+    words = nonDuplicateWordInList(word)
+    print('- Has a double character (e.g. \'oo\'):' + str(words))
     print()
 search(lyric)
 print("End")

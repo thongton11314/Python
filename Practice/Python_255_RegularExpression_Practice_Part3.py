@@ -74,7 +74,7 @@ def search(lyric):
     print()
 
     # has both 'a' and 'e' in it
-    word = re.findall(r'(.*a.*e\b|.*e.*a\b)', lyric)
+    word = re.findall(r'\w*a\w*e\w*|\w*e\w*a\w*', lyric)
     print('- Has both \'a\' and \'e\' in it' + str(word))
     print()
 

@@ -80,7 +80,7 @@ def search(lyric):
     print()
 
     # starts with an 'q' or an 'Q'
-    word = re.findall(r'\b[qQ]\w*', lyric)
+    word = re.findall(r'[qQ]\w*', lyric)
     words = nonDuplicateWordInList(word)
     print('- Starts with an \'q\' or \'Q\':' + str(words))
     print()
@@ -92,12 +92,12 @@ def search(lyric):
     print()
 
     # has an 'a' and somewhere later an 'e'
-    word = re.findall(r"\b\w*a\w*e\b", lyric)
+    word = re.findall(r"\w*[a]\w*[e]\w*", lyric)
     words = nonDuplicateWordInList(word)
     print('- has an \'a\' and somewhere later an \'e\':' + str(words))
     print()
 
-#*    # does not have an 'a'
+    # does not have an 'a'
     word = re.findall(r'\b[^a\s]+\b', lyric)
     words = nonDuplicateWordInList(word)
     print('- Does not have an \'a\':' + str(words))
@@ -109,20 +109,20 @@ def search(lyric):
     print('- Does not have an \'a\' nor \'e\':' + str(words))
     print()
 
-    # has an 'a' but not 'e'
+#*    # has an 'a' but not 'e'
     word = re.findall(r'\b[^e\s]+\b', lyric)
     words = nonDuplicateWordInList(word)
     print('- has an \'a\' but not \'e\':' + str(words))
     print()
 
-#*    # has at least 2 consecutive vowels (a,e,i,o,u) like in the word "bear"
-    word = re.findall(r"\w*[aeiou]{2,}[\w\']*", lyric)
+    # has at least 2 consecutive vowels (a,e,i,o,u) like in the word "bear"
+    word = re.findall(r"\w*[aeiou]{2,}[\w\S]*", lyric)
     words = nonDuplicateWordInList(word)
     print('- Has at least 2 consecutive vowels (a,e,i,o,u) like in the word "bear":' + str(words))
     print()
 
     # has at least 3 vowels
-    word = re.findall(r'\w*[aeiou]{3,}\w*', lyric)
+    word = re.findall(r'\w*[aeiou]+\w*[aeiou]+\w*[aeiou]+[\w\S]*\w*', lyric)
     words = nonDuplicateWordInList(word)
     print('- Has at least 3 vowels:' + str(words))
     print()

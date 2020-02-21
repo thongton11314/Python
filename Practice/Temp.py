@@ -8,16 +8,10 @@ thong's ae's 11 12 115 11e aaa aaa 115 +thong113+ thong beautiful aade bae
 """
 
 #lyric = """thong's abb 116 11 12 115 115 11e 116 aaa"""
+#*    # does not have an 'a'
+# \w*a\w*e\w*|\w*e\w*a\w*
+# r'\b[^a\s]+\b'
+print(re.findall(r'\bqea\b', 'ee qaqe qea qeeae ve ba b a ea aot iou qaqeqo\'s oau qaqeqiqo aieuo aieuoooaaasty thong'))
 
-def nonDuplicateWordInList(listOfWord):
-    nonDuplicatedList = []
-    for eachWord in listOfWord:
-        if eachWord not in nonDuplicatedList:
-            nonDuplicatedList.append(eachWord)
-    return nonDuplicatedList
-
-# has both 'a' and 'e' in it
-word = re.findall(r'\w*a\w*e\w*|\w*e\w*a\w*', lyric)
-print(nonDuplicateWordInList(word))
 
 

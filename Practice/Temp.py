@@ -11,6 +11,8 @@ thong's ae's 11 12 115 11e aaa aaa 115 +thong113+ thong beautiful aade bae
 #*    # does not have an 'a'
 # \w*a\w*e\w*|\w*e\w*a\w*
 # r'\b[^a\s]+\b'
+
+# has an 'a' but not 'e' 
 print(re.findall(r'\bqea\b', 'ee qaqe qea qeeae ve ba b a ea aot iou qaqeqo\'s oau qaqeqiqo aieuo aieuoooaaasty thong'))
 
 

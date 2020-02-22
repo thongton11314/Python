@@ -109,7 +109,7 @@ def search(lyric):
     print('- Does not have an \'a\' nor \'e\':' + str(words))
     print()
 
-#*    # has an 'a' but not 'e'
+    # has an 'a' but not 'e'
     word = re.findall(r'\b[^e\s]+\b', lyric)
     words = nonDuplicateWordInList(word)
     print('- has an \'a\' but not \'e\':' + str(words))

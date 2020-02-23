@@ -34,9 +34,9 @@ def readingFromJSON(fileName):
     myFile = None
     #Open file
     try:
-        with open(fileName) as myFile:
-            data = json.load(myFile)
-        return data
+       myFile = open(fileName) #same as (with open(fileName) as myFile:)
+       data = json.load(myFile)
+       return data
     #Any error relative to files
     except IOError:
         print("File is not found")
@@ -53,13 +53,13 @@ peopleInfor = {
         "Name" : "Thong",
         "Year" : 1995,
         "National" : "Vietnam",
-        "Good at": ["Computer science", "Tennis"]
+        "Good at" : ["Computer science", "Tennis"]
     },
     "Person 2" : { 
         "Name" : "Thanh",
         "Year" : 1991,
         "National" : "Vietnam",
-        "Good at": ["Hardware", "Dummy things"]
+        "Good at" : ["Hardware", "Dummy things"]
     },
     "Person 3" : { 
         "Name" : "Diep",

@@ -1,0 +1,1 @@
+{"Person 1": {"Name": "Thong", "Year": 1995, "National": "Vietnam", "Good at": ["Computer science", "Tennis"]}, "Person 2": {"Name": "Thanh", "Year": 1991, "National": "Vietnam", "Good at": ["Hardware", "Dummy things"]}, "Person 3": {"Name": "Diep", "Year": 1989, "National": "Vietnam", "Good at": ["Enviromental Engineering", "Running"]}}

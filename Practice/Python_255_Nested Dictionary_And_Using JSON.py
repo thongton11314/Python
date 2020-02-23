@@ -1,4 +1,8 @@
 # Practice with nested Dictionary
+# Imply JSON library
+
+import json
+
 peopleInfor = { 
     "Person 1" : { 
         "Name" : "Thong",
@@ -26,3 +30,4 @@ for eachPerson in peopleInfor:
         + " - National:" + peopleInfor[eachPerson].get("National")
         + " - Good at:" + str(peopleInfor[eachPerson].get("Good at"))
     )
+    

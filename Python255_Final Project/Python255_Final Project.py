@@ -93,21 +93,32 @@ def topTenTimeZone(dic):
 # Output: a graph with horizontal bars
 def dataVisualization(lst):
     # Make data
-    ranks = []
-    bars = []
+    frequency = []
+    timeZone = []
     for each in lst:
-        bars.append(each[0])
-        ranks.append(each[1])
+        timeZone.append(each[0])
+        frequency.append(each[1])
+    #Figure Horizontal Bar
+    plt.figure("Horizontal Bar")
     #Set Title
     plt.title("Top Ten Time Zone Using Internet")
+    #Set y-label
+    plt.ylabel("Time-zone")
+    #Set x-label
+    plt.xlabel("Frequency")
     #Horizontal bar
-    y_pos = np.arange(len(bars))
+    y_pos = np.arange(len(timeZone))
     #Create names on the x-axis
-    plt.yticks(y_pos, bars)
+    plt.yticks(y_pos, timeZone)
     #Create verticle bars
-    plt.barh(y_pos, ranks)
+    plt.barh(y_pos, frequency)
+
+    #Figure Scatter plot
+    plt.figure("Scatter Plot")
+    plt.scatter(timeZone, frequency)
     #Show graphic
     plt.show()
+
 
 
 #Read file name

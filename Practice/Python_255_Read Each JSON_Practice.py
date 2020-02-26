@@ -2,9 +2,9 @@ def readFile(fileName):
     myFile = None   
     list = []
     try:
-        myfile = open(fileName, 'r')
+        myFile = open(fileName, 'r')
         while True:
-            line = myfile.readline()
+            line = myFile.readline()
             if line.strip():
                 list.append(line.strip())
             if not line:
@@ -21,6 +21,4 @@ def readFile(fileName):
         
 
 fileName= "Test File Multiple Line.txt"
-print(type(readFile(fileName)))
-newList = readFile(fileName)
-print(newList)
+print(readFile(fileName))

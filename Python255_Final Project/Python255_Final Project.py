@@ -99,27 +99,21 @@ def dataVisualization(lst):
         timeZone.append(each[0])
         frequency.append(each[1])
     #Figure Horizontal Bar
-    plt.figure("Horizontal Bar")
-    #Set Title
+    horizontalBar = plt.figure("Horizontal Bar", figsize=(18, 5))
     plt.title("Top Ten Time Zone Using Internet")
-    #Set y-label
     plt.ylabel("Time-zone")
-    #Set x-label
     plt.xlabel("Frequency")
-    #Horizontal bar
     y_pos = np.arange(len(timeZone))
-    #Create names on the x-axis
     plt.yticks(y_pos, timeZone)
-    #Create verticle bars
     plt.barh(y_pos, frequency)
-
     #Figure Scatter plot
-    plt.figure("Scatter Plot")
+    verticalBar = plt.figure("Scatter Plot", figsize=(18, 5))
+    plt.title("Top Ten Time Zone Using Internet")
     plt.scatter(timeZone, frequency)
+    plt.xlabel("Time-zone")
+    plt.ylabel("Frequency")
     #Show graphic
     plt.show()
-
-
 
 #Read file name
 fileName = "National Internet Using.json"

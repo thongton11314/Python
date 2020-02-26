@@ -1,4 +1,6 @@
 import json
+
+#Note: Generally speaking, putting more than one JSON object into a file makes that file invalid, broken JSON
 def readFile(fileName):
     myFile = None   
     lst = []

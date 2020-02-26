@@ -9,16 +9,19 @@ def readFile(fileName):
                 list.append(line.strip())
             if not line:
                 break
-        return list
+        return list.copy()
     except IOError:
         print("File is not found")
         return []
     finally:
-        if myFile is not None:
-            myFile.close()
-        else:
+        if myFile == None:
             print("There is no file to close")
+        else:
+            myFile.close()
+        
 
 fileName= "Test File Multiple Line.txt"
 print(type(readFile(fileName)))
-print(readFile(fileName))
+newList = readFile(fileName)
+newList[len(newList) - 1] = ["Crazy"]
+print(newList)

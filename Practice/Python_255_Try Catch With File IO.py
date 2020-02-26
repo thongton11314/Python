@@ -10,6 +10,8 @@ def readFileToList(fileName):
     finally:
         if myFile is not None:
             myFile.close()
+        else:
+            print("There is no file to close")
 
 '''
 Write a fuction that accepts a list string and performs the following tasks

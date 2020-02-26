@@ -37,8 +37,7 @@ def readingFromJSON(fileName):
             print("There is no file to close")
 
 #File name
-temp = "JSON_Test.txt"
-fileName = "National Internet Using.json"  
+temp = "JSON_Test.txt" 
 #Print data to file
 print("Test reading from file")
 data = readingFromJSON(temp)

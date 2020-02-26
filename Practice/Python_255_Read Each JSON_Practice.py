@@ -11,17 +11,16 @@ def readFile(fileName):
                 break
         return list.copy()
     except IOError:
-        print("File is not found")
+        print("File is not found:" , fileName)
         return []
     finally:
-        if myFile == None:
-            print("There is no file to close")
-        else:
+        if myFile is not None:
             myFile.close()
+        else:
+            print("There is no file name:", fileName, "to close")
         
 
 fileName= "Test File Multiple Line.txt"
 print(type(readFile(fileName)))
 newList = readFile(fileName)
-newList[len(newList) - 1] = ["Crazy"]
 print(newList)

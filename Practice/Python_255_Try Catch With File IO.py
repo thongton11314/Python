@@ -30,7 +30,7 @@ def countWord(listOfWord):
     myDict = {}
     for word in listOfWord:
         if word in myDict:
-            myDict[word] += myDict[word]
+            myDict[word] += 1
         else:
             myDict[word] = 1
     return myDict

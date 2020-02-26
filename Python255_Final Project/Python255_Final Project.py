@@ -13,31 +13,72 @@
 # 	Snapshots of the scatter plot and the horizontal bar chart
 
 import json
+import collections
+
 def readFile(fileName):
     myFile = None   
-    dct = {}
+    lst = []
     try:
-        count = 0
         myFile = open(fileName, 'r')
         while True:
             line = myFile.readline()
             if line.strip():
-                dct.update({count : json.loads(line)})
-                count += 1
+                lst.append(json.loads(line))
             if not line:
                 break
-        return dct
+        return lst
     except IOError:
         print("File is not found:" , fileName)
-        return {}
+        return []
     finally:
         if myFile is not None:
             myFile.close()
         else:
             print("There is no file name:", fileName, "to close")
-        
+
+#Remove some necessray data, heartbeat in particular 
+def removeHeartbeat(lst):
+    for each in reversed(lst):
+        if len(each.keys()) == 1:
+            lst.remove(each)
+
+#Return a tubple that first parameter is number of valid time zone, 
+# second parameter is number of non-time zone
+#Input: list of data
+#Output: tubple
+def countTimeZone(lst):
+    validTZ = 0 
+    nonValidTZ = 0    
+    for each in lst:
+        if len(each["tz"]) > 0:
+            validTZ = validTZ + 1
+        else:
+            nonValidTZ = nonValidTZ + 1
+    return (validTZ, nonValidTZ)
+
+def dicOfCountryUsingIntenet(lst):
+    #Create a dictionary with [key] = country, value = count up many time appear
+    myDict = {}
+    for each in lst:
+        if len(each["tz"]) > 0:
+            if each["tz"] in myDict:
+                myDict[each["tz"]] += 1
+            else:
+                myDict[each["tz"]] = 1
+    return myDict
+
+def topTenOfCountryUsingInternet(dic):
+    #Sort the dictionary
+    print(dic.values())
+    #Return the first ten 
+    return None
+
 fileName= "National Internet Using.json"
-dct = readFile(fileName)
-print(len(dct))
-for i in range(2):
-    print(dct[i])
+lst = readFile(fileName)
+removeHeartbeat(lst)
+dicOfContry = dicOfCountryUsingIntenet(lst)
+print(len(lst))
+print("Valid time-zone and invalid time-zone", countTimeZone(lst))
+print(topTenOfCountryUsingInternet(dicOfContry))
+
+

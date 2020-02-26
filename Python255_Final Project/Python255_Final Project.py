@@ -13,8 +13,14 @@
 # 	Snapshots of the scatter plot and the horizontal bar chart
 
 import json
-import collections
+from collections import Counter
+import numpy as np
+import matplotlib.pyplot as plt
 
+# Function: Get JSON data from the file
+# Imply library: json
+# Input: fileName - file of data
+# Ouput: a list of data
 def readFile(fileName):
     myFile = None   
     lst = []
@@ -36,16 +42,17 @@ def readFile(fileName):
         else:
             print("There is no file name:", fileName, "to close")
 
-#Remove some necessray data, heartbeat in particular 
+# Functinon: Remove some necessray data, heartbeat in particular 
+# Input: lst - list of data
+# Output: list of data without useful data
 def removeHeartbeat(lst):
     for each in reversed(lst):
         if len(each.keys()) == 1:
             lst.remove(each)
 
-#Return a tubple that first parameter is number of valid time zone, 
-# second parameter is number of non-time zone
-#Input: list of data
-#Output: tubple
+# Function: Create a tuple that contain valid/invalid time-zone
+# Input: list of data
+# Output: tubple
 def countTimeZone(lst):
     validTZ = 0 
     nonValidTZ = 0    
@@ -56,8 +63,10 @@ def countTimeZone(lst):
             nonValidTZ = nonValidTZ + 1
     return (validTZ, nonValidTZ)
 
-def dicOfCountryUsingIntenet(lst):
-    #Create a dictionary with [key] = country, value = count up many time appear
+# Function: Create a dictionary with time-zone as key, time appear as value
+# Input: lst - list of time-zone
+# Output: a dictionary 
+def dicOfTimeZone(lst):
     myDict = {}
     for each in lst:
         if len(each["tz"]) > 0:
@@ -67,18 +76,52 @@ def dicOfCountryUsingIntenet(lst):
                 myDict[each["tz"]] = 1
     return myDict
 
-def topTenOfCountryUsingInternet(dic):
-    #Sort the dictionary
-    print(dic.values())
-    #Return the first ten 
-    return None
+# Function: Get the most 10 common element from dictionary
+# Imply library: Collection/Counter
+# Input: dictionary
+# Output: a list of 10 commom element
+def topTenTimeZone(dic):
+    #Count the most commom in dict
+    counter = Counter(dic)
+    tenCountry = counter.most_common(10)
+    return tenCountry
 
-fileName= "National Internet Using.json"
+# Function: Show horizontal bars graph top 10 country using internet
+# Imply library: numpy as np
+#                matplotlib.pyplot as plt
+# Input: lst - list of contries
+# Output: a graph with horizontal bars
+def dataVisualization(lst):
+    # Make data
+    ranks = []
+    bars = []
+    for each in lst:
+        bars.append(each[0])
+        ranks.append(each[1])
+    #Set Title
+    plt.title("Top Ten Time Zone Using Internet")
+    #Horizontal bar
+    y_pos = np.arange(len(bars))
+    #Create names on the x-axis
+    plt.yticks(y_pos, bars)
+    #Create verticle bars
+    plt.barh(y_pos, ranks)
+    #Show graphic
+    plt.show()
+
+
+#Read file name
+fileName = "National Internet Using.json"
+#Gather data into list
 lst = readFile(fileName)
+#Remove some unuseful data
 removeHeartbeat(lst)
-dicOfContry = dicOfCountryUsingIntenet(lst)
-print(len(lst))
-print("Valid time-zone and invalid time-zone", countTimeZone(lst))
-print(topTenOfCountryUsingInternet(dicOfContry))
-
-
+#Get countries
+timeZone = dicOfTimeZone(lst)
+#Get top ten
+topTen = topTenTimeZone(timeZone)
+print("- Total size of data:", len(lst))
+print("- Valid time-zone and invalid time-zone", countTimeZone(lst))
+print("- Top ten time-zone using internet:", topTen)
+#Graph with 10 commom time-zone using internet
+dataVisualization(topTen)

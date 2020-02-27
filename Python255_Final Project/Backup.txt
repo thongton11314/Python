@@ -1,17 +1,17 @@
-# Final Project
-#   Developer: Thong Ton
-#   Guider: Professor Dung Mai, Edmonds Community College
-#   Topic: Data Analysis
-#   Requirement:
-# 	    Import json library to read data into a list of records
-# 	    Use list, dictionary, and programming elements to display 10 ten regions (timezone) that use the Internet
-# 	    Draw a horizontal bar chart to display the top ten regions and scatter plot of the data.
-#   Sources: 
-#       https://matplotlib.org
-#       https://matplotlib.org/3.1.1/gallery/lines_bars_and_markers/barh.html
-#       https://matplotlib.org/3.1.0/gallery/subplots_axes_and_figures/subplots_demo.html
+# Option 1 - Data Analysis
+# Objectives
+# 	Understand how to read files using Python
+# 	Use list, dictionary, and programming elements to analyze the data from the file
+# 	Use Json package to read Json from a file
+# 	Use Mathplotlib to draw a scatter plot
+# Instruction
+# 	Import json library to read data into a list of records
+# 	Use list, dictionary, and programming elements to display 10 ten regions (timezone) that use the Internet
+# 	Draw a horizontal bar chart to display the top ten regions and scatter plot of the data.
+# Submission
+# 	The py source code
+# 	Snapshots of the scatter plot and the horizontal bar chart
 
-# Library
 import json
 from collections import Counter
 import numpy as np
@@ -98,23 +98,20 @@ def dataVisualization(lst):
     for each in lst:
         timeZone.append(each[0])
         frequency.append(each[1])
-    # Two graph in one figure
-    fig, (horizontalBar,scatterPlot) = plt.subplots(2)
-    fig.suptitle('Top 10 Regions Using Internet')
-    # Horizontal bar
+    #Figure Horizontal Bar
+    horizontalBar = plt.figure("Horizontal Bar", figsize=(18, 5))
+    plt.title("Top Ten Time Zone Using Internet")
+    plt.ylabel("Time-zone")
+    plt.xlabel("Frequency")
     y_pos = np.arange(len(timeZone))
-    horizontalBar.barh(y_pos, frequency)
-    horizontalBar.set_yticks(y_pos)
-    horizontalBar.set_yticklabels(timeZone)
-    horizontalBar.invert_yaxis() 
-    horizontalBar.set_title('By Horizontal Bar')
-    horizontalBar.set_xlabel('Frequency')
-    horizontalBar.set_ylabel('Time-Zone')
-    # Scatter plot
-    scatterPlot.set_title("By Scatter Plot")
-    scatterPlot.scatter(timeZone, frequency)
-    scatterPlot.set_xlabel("Time-Zone")
-    scatterPlot.set_ylabel("Frequecy")
+    plt.yticks(y_pos, timeZone)
+    plt.barh(y_pos, frequency)
+    #Figure Scatter plot
+    verticalBar = plt.figure("Scatter Plot", figsize=(18, 5))
+    plt.title("Top Ten Time Zone Using Internet")
+    plt.scatter(timeZone, frequency)
+    plt.xlabel("Time-zone")
+    plt.ylabel("Frequency")
     #Show graphic
     plt.show()
 

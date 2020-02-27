@@ -1,4 +1,5 @@
 # Final Project
+#   Proposal: https://docs.google.com/document/d/1lbD_dyg6gwNgmIyiGswhel6B7Jl6CUOwBP6hWMX14QE/edit
 #   Developer: Thong Ton
 #   Guider: Professor Dung Mai, Edmonds Community College
 #   Topic: Data Analysis
@@ -6,7 +7,7 @@
 # 	    Import json library to read data into a list of records
 # 	    Use list, dictionary, and programming elements to display 10 ten regions (timezone) that use the Internet
 # 	    Draw a horizontal bar chart to display the top ten regions and scatter plot of the data.
-#   Sources: 
+#   Reference:     
 #       https://matplotlib.org
 #       https://matplotlib.org/3.1.1/gallery/lines_bars_and_markers/barh.html
 #       https://matplotlib.org/3.1.0/gallery/subplots_axes_and_figures/subplots_demo.html

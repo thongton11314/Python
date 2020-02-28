@@ -102,6 +102,7 @@ def dataVisualization(lst):
     # Two graph in one figure
     fig, (horizontalBar,scatterPlot) = plt.subplots(2)
     fig.suptitle('Top 10 Regions Using Internet')
+    fig.canvas.set_window_title('Regions Internet Usage') 
     # Horizontal bar
     y_pos = np.arange(len(timeZone))
     horizontalBar.barh(y_pos, frequency)

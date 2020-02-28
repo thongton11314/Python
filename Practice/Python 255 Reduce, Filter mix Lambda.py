@@ -6,3 +6,5 @@ def valueMean(mylist):
 
 mylist = list(range(-10, 10))
 print(list(filter(lambda a: a < 0, mylist)))
+
+print((lambda a: a)(2))

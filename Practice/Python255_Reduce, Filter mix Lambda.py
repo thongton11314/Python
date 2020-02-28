@@ -12,6 +12,9 @@ mylist = list(range(-10, 10))
 # Print number less than 10 by using fillter
 # The filter() method filters the given sequence with the help of a function that tests each element in the sequence to be true or not
 # filter(fun(), sequence) 
+# Result in filter adress
+print(filter(lambda a: a < 0, mylist))
+# Result in list of element after filter 
 print(list(filter(lambda a: a < 0, mylist)))
 
 # Print the average by using reduce

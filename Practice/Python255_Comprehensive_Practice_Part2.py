@@ -8,7 +8,7 @@ def square():
     return result
 
 def square2():
-    #Return ... For loop ... Condition Statement
+    #Return from condition ... For loop ... Condition Statement
     return [(a,b,c) for a in range(1,30) for b in range(1,30) for c in range(1,30) if a**2 + b**2 == c**2]
 
 

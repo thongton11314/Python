@@ -1,3 +1,7 @@
+#list comprehension work as: [Return from condition ... Condition Statement]
+#lambda work as: lambda arguments : expression
+
+#Style of newbie
 def square():
     result = []
     for a in range(1,30):
@@ -7,19 +11,19 @@ def square():
                     result.append((a,b,c))
     return result
 
-def square2():
-    #Return from condition ... For loop ... Condition Statement
-    return [(a,b,c) for a in range(1,30) for b in range(1,30) for c in range(1,30) if a**2 + b**2 == c**2]
-
-
+#Style of immediate
 def isSquare(a,b,c):
         return a**2 + b**2 == c**2
 
-def square3():    
+def square2():    
     return [(a,b,c) for a in range(1,30) for b in range(1,30) for c in range(1,30) if isSquare(a,b,c)]
 
+#Style of legendary
+def square3():    
+    return [(a,b,c) for a in range(1,30) for b in range(1,30) for c in range(1,30) if a**2 + b**2 == c**2]
 
+#Style of noob
+def square4():
+    return [(lambda a,b,c: (a,b,c))(a,b,c) for a in range(1,30) for b in range(1,30) for c in range(1,30) if a**2 + b**2 == c**2]
 
-print(square())
-print(square2())
-print(square3())
+print("They are all the same" if square() == square2() == square3() == square4() else "Not the same")

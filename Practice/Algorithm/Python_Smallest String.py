@@ -5,4 +5,4 @@ def smallestString(arr):
             key = each  
     return key
 arr = ["rose", "flower", "nice", "light", "beautiful", "ab", "ba"]
-print(smallestString(arr))    
+print(smallestString(arr)) 

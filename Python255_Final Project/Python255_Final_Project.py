@@ -43,7 +43,7 @@ def readFile(fileName):
         else:
             print("There is no file name:", fileName, "to close")
 
-# Functinon: Remove some necessray data, heartbeat in particular 
+# Functinon: Remove some necessary data, heartbeat in particular 
 # Input: lst - list of data
 # Output: list of data without useful data
 def removeHeartbeat(lst):
@@ -130,8 +130,10 @@ removeHeartbeat(lst)
 timeZone = dicOfTimeZone(lst)
 #Get top ten
 topTen = topTenTimeZone(timeZone)
-print("- Total size of data:", len(lst))
+print("- Total size of data after remove unuseful data:", len(lst))
 print("- Valid time-zone and invalid time-zone", countTimeZone(lst))
-print("- Top ten time-zone using internet:", topTen)
+print("- Top ten time-zone using internet:")
+for each in topTen:
+    print(each)
 #Graph with 10 commom time-zone using internet
 dataVisualization(topTen)

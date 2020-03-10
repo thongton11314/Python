@@ -43,12 +43,13 @@ def readFile(fileName):
         else:
             print("There is no file name:", fileName, "to close")
 
-# Functinon: Remove some necessary data, heartbeat in particular 
+# Functinon: Remove some unnecessary data, heartbeat in particular 
 # Input: lst - list of data
-# Output: list of data without useful data
+# Output: list of data without "heartbeat"
 def removeHeartbeat(lst):
     for each in reversed(lst):
-        if len(each.keys()) == 1:
+        temp = {"_heartbeat_": None}
+        if each.keys() == temp.keys():
             lst.remove(each)
 
 # Function: Create a tuple that contain valid/invalid time-zone

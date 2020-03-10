@@ -3,12 +3,10 @@ from collections import Counter
 
 
 class FinalProject:
-    def __init__(self):
-        pass
-
     def removeHeartbeat(self, lst):
         for each in reversed(lst):
-            if len(each.keys()) == 1:
+            temp = {"_heartbeat_": None}
+            if each.keys() == temp.keys():
                 lst.remove(each)
 
     def countTimeZone(self, lst):
@@ -38,4 +36,9 @@ class FinalProject:
         return tenCountry
 
 
-
+class TestFunction(unittest.TestCase, FinalProject):
+    def testRemoveHeartbeat(self):
+        lst = [{"_heartbeat_":1331926831}, {"Data":None}, {"_heartbeat_":1331926831}]
+        self.assertAlmostEqual(FinalProject.removeHeartbeat(self, lst), [{'Data': None}])
+        
+unittest.main()

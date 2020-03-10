@@ -35,7 +35,6 @@ class FinalProject:
         tenCountry = counter.most_common(10)
         return tenCountry
 
-
 class TestFunction(unittest.TestCase, FinalProject):
 
     def testRemoveHeartbeat(self):

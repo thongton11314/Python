@@ -1,7 +1,6 @@
 import unittest
 from collections import Counter
 
-
 class FinalProject:
 
     def removeHeartbeat(self, lst):

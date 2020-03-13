@@ -1,12 +1,9 @@
 import functools
 
 # Testing lambda expression
-# Result in lambda location in memory (value = address of this function)
-print((lambda a,b: a + b))
-# Result the lambda expression, (value = 3)
-print((lambda a,b: a + b)(1, 2)) 
-# Another example, (value = 1)
-result = lambda x: x*x*x 
+print((lambda a,b: a + b)) # Result in lambda location in memory (value = address of this function)
+print((lambda a,b: a + b)(1, 2)) # Result the lambda expression, (value = 3)
+result = lambda x: x*x*x # Another example, (value = 1)
 print(result(1))
 
 mylist = list(range(-10, 10))

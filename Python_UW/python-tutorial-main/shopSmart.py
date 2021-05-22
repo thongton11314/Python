@@ -41,7 +41,7 @@ def shopSmart(orderList, fruitShops):
     if (len(fruitShops) > 1):
 
         # Compare next shop except first shop
-        for aShop in fruitShops[1:]: 
+        for aShop in fruitShops[1:]:
             currentTotalCost = aShop.getPriceOfOrder(orderList)
 
             # If the current shop has lower price, !replace!

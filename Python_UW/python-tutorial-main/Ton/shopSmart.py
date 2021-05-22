@@ -31,21 +31,26 @@ def shopSmart(orderList, fruitShops):
     """
     "*** YOUR CODE HERE ***"
     # should return FruitShop type
-    currentTotalCost = 0.0
-    currentCheapestCost = -1
-    count = 0
-    cheapestShop = fruitShops[0]
-    for aShop in fruitShops: 
-        currentTotalCost = aShop.getPriceOfOrder(orderList)
 
-        if (count > 0):
+    # Get first shop as cheapest
+    cheapestShop = fruitShops[0]
+    currentTotalCost = cheapestShop.getPriceOfOrder(orderList)
+    currentCheapestCost = currentTotalCost
+
+    # Multiple shops
+    if (len(fruitShops) > 1):
+
+        # Compare next shop except first shop
+        for aShop in fruitShops[1:]:
+            currentTotalCost = aShop.getPriceOfOrder(orderList)
+
+            # If the current shop has lower price, !replace!
             if (currentTotalCost < currentCheapestCost):
                 currentCheapestCost = currentTotalCost
                 cheapestShop = aShop
-        else:
-            currentCheapestCost = currentTotalCost
-        currentTotalCost = 0.0
-        count += 1
+            currentTotalCost = 0.0
+    
+    # Return cheapest shop
     return cheapestShop
 
 

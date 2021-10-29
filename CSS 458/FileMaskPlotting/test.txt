@@ -1,0 +1,3 @@
+    print('Len of temperature:' + str(len(arrayOfTemperatures)) + ', total masks: ' + str(N.ma.count_masked(arrayOfTemperatures)))
+    print('Len of temperature after mask: ' + str(7733 - 227))
+    print('Len of Days:' + str(len(arrayOfJulianDays)))

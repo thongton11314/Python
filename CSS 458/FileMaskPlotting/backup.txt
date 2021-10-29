@@ -1,0 +1,83 @@
+import numpy as N
+import numpy.ma as ma
+import matplotlib.pyplot as plt
+
+# Read the ASFG file and return temperature, julian day by list
+def readFile(fileName):
+    
+    # Open the file
+    f = open(fileName, 'r')
+    
+    # Skip the first three lines in file
+    for i in range(3):
+        f.readline()
+    
+    # Read lines start from the third line in file
+    lines = f.readlines() # Read full current line
+    
+    # Initialize the needed lists
+    temperatures = list()
+    julianDays = list()
+    temperAndJulian = list()
+    
+    # Achieve each line in bunched of line just read from file
+    for line in lines:
+        
+        # Split the line
+        onlyDatas = line.split('\t')
+        
+        if (len(onlyDatas) == 4):
+            
+            # Temperature
+            temper = onlyDatas[3].rstrip()
+            julianDays.append(onlyDatas[0])
+            
+            if (temper == ''):
+                temperatures.append(N.nan)   
+            else:
+                temperatures.append(temper)   
+
+    # Add temperature and julian day into returned list
+    temperAndJulian.append(temperatures)
+    temperAndJulian.append(julianDays)
+    return temperAndJulian
+
+# Display the data by x and y cordination
+def displayGraph(temperatures, days):
+        
+    # Plot first arguments is x-cordinate, second argument is y-cordinate
+    plt.plot(temperatures, days)
+    plt.xlabel('Temperature')
+    plt.ylabel('Julian Day')
+    plt.show()
+    
+def main():
+    
+    # Read the file
+    temperAndJulian = readFile("ASFG_Ts.txt")
+    
+    # Convert list of temperatures into array of temperature
+    # Using Mask to eliminate missing value
+    strToFloat = N.array(temperAndJulian[0], dtype='float64')
+    arrayOfTemperatures = ma.masked_invalid(strToFloat)
+    
+    # Convert list of Julian Day into array of JulianDay
+    arrayOfJulianDays = N.asarray(temperAndJulian[1], dtype='float64')
+
+    # Calculate average temperature
+    avg = N.average(arrayOfTemperatures)
+    print('Average temperature: ' + str(avg))
+    
+    # Calculate standard deviation
+    std = N.std(arrayOfTemperatures)
+    print('Standard deviation: ' + str(std))
+    
+    # Calculate median
+    med = N.mean(arrayOfTemperatures)
+    print('Median: ' + str(med))
+    
+    # Display the graph
+    displayGraph(arrayOfTemperatures, arrayOfJulianDays)
+
+# Run
+main()
